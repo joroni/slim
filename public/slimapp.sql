@@ -24,6 +24,26 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+-- Table structure for table `products`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `ponumber` varchar(200) NOT NULL,
+   `cname` varchar(200) NOT NULL,
+    `notes` varchar(200) NOT NULL,
+     `dateordered` varchar(200) NOT NULL,
+  `sku` varchar(200) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `oldprice` varchar(200) NOT NULL,
+  `price` varchar(200) NOT NULL,
+  `smname` varchar(200) NOT NULL,
+ `items` varchar(800) NOT NULL,
+ 
+  `total` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
 --
 -- Table structure for table `categories`
 --
@@ -108,6 +128,9 @@ INSERT INTO `products` (`id`, `sku`, `name`, `cat`, `state`, `statecolor`, `size
 (3, 'A0000003', 'Cookl Shirt', 'Out Wear', 'New', 'green', '', '14.jpg', '', '299.00', 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time', '4', '', '', '', '', '', '', '', '', ''),
 (4, 'A0000004', 'Cookl Shirt', 'Out Wear', '', '', '3 pcs x 180 ml', 'coffee.jpg', '', '310.00', '137 Degrees Iced Coffee Latte with Almond Milk Drink', '20', '', '', '', '', '', '', '', '', ''),
 (5, 'A0000005', 'Gingen Strong Ginger Formula Tea', 'Tea', '', '', '3 pcs x 180 ml', 'tea.jpg', '', '75.00', 'Hot drink with slightly sweet and strong taste from aged quality ginger\',', '100', '', '', '', '', '', '', '', '', '');
+
+
+
 
 -- --------------------------------------------------------
 

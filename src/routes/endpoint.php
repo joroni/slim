@@ -691,6 +691,7 @@ if(isset($_FILES["myfile"]))
 /**************Add Order********** */
 
 
+
 // Add Orders
 $app->post('/api/orders/add', function(Request $request, Response $response){
     $sku = $request->getParam('sku');
@@ -699,25 +700,22 @@ $app->post('/api/orders/add', function(Request $request, Response $response){
     $state = $request->getParam('state');
     $statecolor = $request->getParam('statecolor');
     $size = $request->getParam('size');
-    $img = $request->getParam('img');
     $oldprice = $request->getParam('oldprice');
     $price = $request->getParam('price');
     $descr = $request->getParam('descr');
     $stock = $request->getParam('stock');
-    /*$cname = $request->getParam('cname');
+    $cname = $request->getParam('cname');
     $check = $request->getParam('check');
     $select = $request->getParam('select');
     $notes = $request->getParam('notes');
-    $email = $request->getParam('email');
     $smname = $request->getParam('smname');
-    $timestamp = $request->getParam('timestamp');
     $ponumber = $request->getParam('ponumber');
-    $total = $request->getParam('total');*/
+    $total = $request->getParam('total');
 
 
 
-    $sql = "INSERT INTO products (sku,name,cat,state,statecolor,size,img, oldprice, price,descr,stock) VALUES
-    (:sku,:name,:cat,:state,:statecolor,:size,:img,:oldprice,:price,:descr,:stock)";
+    $sql = "INSERT INTO orders (sku,name,cat,state,statecolor,size, oldprice, price,descr,stock,cname,check,select, notes,smname,ponumber, total) VALUES
+    (:sku,:name,:cat,:state,:statecolor,:size,:oldprice,:price,:descr,:stock,:cname,:check,:select,:notes,:smname,:ponumber,:total)";
 
     try{
         // Get DB Object
@@ -733,16 +731,22 @@ $app->post('/api/orders/add', function(Request $request, Response $response){
         $stmt->bindParam(':state',      $state);
         $stmt->bindParam(':statecolor',    $statecolor);
         $stmt->bindParam(':size',       $size);
-        $stmt->bindParam(':img',       $img);
         $stmt->bindParam(':oldprice',      $oldprice);
         $stmt->bindParam(':price',      $price);
         $stmt->bindParam(':descr',      $descr);
          $stmt->bindParam(':stock',      $stock);
+         $stmt->bindParam(':cname',       $cname);
+         $stmt->bindParam(':check',       $check);
+         $stmt->bindParam(':select',       $select);
+         $stmt->bindParam(':notes',       $notes);
+         $stmt->bindParam(':smname',       $smname);
+         $stmt->bindParam(':ponumber',       $ponumber);
+         $stmt->bindParam(':total',       $total);
         
 
         $stmt->execute();
 
-        echo '{"notice": {"text": "Products Added"}';
+        echo '{"notice": {"text": "Order Sent"}';
        // echo '<script>alert("Products Added");</script>';
 
     } catch(PDOException $e){
@@ -753,8 +757,26 @@ $app->post('/api/orders/add', function(Request $request, Response $response){
 
 
 
-$app->get('/test', function(Request $request, Response $response){
 
- 
 
+/************************ */
+// Get Single Customer
+$app->get('/api/orders/{sku}', function(Request $request, Response $response){
+    $sku = $request->getAttribute('sku');
+
+    $sql = "SELECT * FROM orders WHERE sku = $sku";
+
+    try{
+        // Get DB Object
+        $db = new db();
+        // Connect
+        $db = $db->connect();
+
+        $stmt = $db->query($sql);
+        $users = $stmt->fetch(PDO::FETCH_OBJ);
+        $db = null;
+        echo json_encode($users);
+    } catch(PDOException $e){
+        echo '{"error": {"text": '.$e->getMessage().'}';
+    }
 });
