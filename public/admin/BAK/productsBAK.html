@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Paper Dashboard by Creative Tim</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="assets/css/animate.min.css" rel="stylesheet" />
+
+    <!--  Paper Dashboard core CSS    -->
+    <link href="assets/css/paper-dashboard.css" rel="stylesheet" />
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+
+    <!--  Fonts and icons     -->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/themify-icons.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="sidebar" data-background-color="white" data-active-color="danger">
+
+            <!--
+		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+	-->
+
+            <div class="sidebar-wrapper">
+                <div class="logo">
+
+                    <a href="/" class="simple-text">
+                        <img src="assets/img/logo.svg" width="120" />
+                    </a>
+                </div>
+
+                <ul class="nav">
+                    <li>
+                        <a href="dashboard.html">
+                            <i class="ti-panel"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <!--  <li>
+                        <a href="user.html">
+                            <i class="ti-user"></i>
+                            <p>User Profile</p>
+                        </a>
+                    </li>-->
+                    <li class="active">
+                        <a href="products.html">
+                            <i class="ti-view-list-alt"></i>
+                            <p>Products List</p>
+                        </a>
+                    </li>
+                    <!-- <li>
+                        <a href="typography.html">
+                            <i class="ti-text"></i>
+                            <p>Typography</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="icons.html">
+                            <i class="ti-pencil-alt2"></i>
+                            <p>Icons</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="maps.html">
+                            <i class="ti-map"></i>
+                            <p>Maps</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="notifications.html">
+                            <i class="ti-bell"></i>
+                            <p>Notifications</p>
+                        </a>
+                    </li>
+                    <li class="active-pro">
+                        <a href="upgrade.html">
+                            <i class="ti-export"></i>
+                            <p>Upgrade to PRO</p>
+                        </a>
+                    </li>-->
+                </ul>
+            </div>
+        </div>
+
+        <div class="main-panel">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar bar1"></span>
+                            <span class="icon-bar bar2"></span>
+                            <span class="icon-bar bar3"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Products list</a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="ti-panel"></i>
+                                    <p>Stats</p>
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="ti-bell"></i>
+                                    <p class="notification">5</p>
+                                    <p>Notifications</p>
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Notification 1</a></li>
+                                    <li><a href="#">Notification 2</a></li>
+                                    <li><a href="#">Notification 3</a></li>
+                                    <li><a href="#">Notification 4</a></li>
+                                    <li><a href="#">Another notification</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="ti-settings"></i>
+                                    <p>Settings</p>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+
+
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="header">
+                                    <div class="container" style="width:100%;">
+                                        <div class="row">
+                                            <div class="col navbar-left">
+                                                <h4 class="title">Grocery</h4>
+                                                <p class="datenow">Available</p>
+                                            </div>
+                                            <div class="col navbar-right" style="margin-right:10px;">
+                                                <button type="button" class="btn button-add btn-primary" data-toggle="modal"
+                                                    data-target="#productModal" data-whatever="@mdo">Add</button>
+                                                <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#productModal" data-whatever="@fat">@fat</button>-->
+
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="content table-responsive table-full-width">
+                                        <table class="table product-table table-striped">
+                                            <thead>
+                                                <th>ID</th>
+                                                <th>SKU</th>
+                                                <th>NAME</th>
+                                                <th>CATEGORY</th>
+                                                <th>PRICE</th>
+                                            </thead>
+                                            <tbody id="product-tbody">
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <!--<nav class="pull-left">
+                        <ul>
+
+                            <li>
+                                <a href="http://www.creative-tim.com">
+                                    Creative Tim
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://blog.creative-tim.com">
+                                    Blog
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.creative-tim.com/license">
+                                    Licenses
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="copyright pull-right">
+                        &copy; <script>
+                            document.write(new Date().getFullYear())
+                        </script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative
+                            Tim</a>
+                    </div>-->
+                    </div>
+                </footer>
+
+
+
+
+
+
+            </div>
+        </div>
+
+        <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel"
+            aria-hidden="true">
+
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="productModalLabel">New Product</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <!--$sku = $request->getParam('sku');
+                        $name = $request->getParam('name');
+                        $cat = $request->getParam('cat');
+                        $state = $request->getParam('state');
+                        $statecolor = $request->getParam('statecolor');
+                        $size = $request->getParam('size');
+                        $img = $request->getParam('img');
+                      /*  $oldprice = $request->getParam('oldprice');
+                        $price = $request->getParam('price');
+                        $descr = $request->getParam('descr');
+                        $stock = $request->getParam('stock');
+                        $cname = $request->getParam('cname');
+                        $check = $request->getParam('check');
+                        $select = $request->getParam('select');
+                        $notes = $request->getParam('notes');
+                        $email = $request->getParam('email');
+                        $smname = $request->getParam('smname');
+                        $timestamp = $request->getParam('timestamp');
+                        $ponumber = $request->getParam('ponumber');
+                        $total = $request->getParam('total');*/ -->
+                        <form>
+
+                            <input type="hidden" class="identifier" value="" />
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" name="name" id="name" class="form-control border-input"
+                                            placeholder="Blue Shirt">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>SKU</label>
+                                        <input type="text" name="sku" id="sku" class="form-control border-input"
+                                            placeholder="A10101">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Category</label>
+                                        <input type="text" name="cat" id="cat" class="form-control border-input"
+                                            placeholder="Baby">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>State</label>
+                                        <input type="text" name="state" id="state" class="form-control border-input"
+                                            placeholder="New">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>State Color</label>
+                                        <input type="text" name="statecolor" id="statecolor" class="form-control border-input"
+                                            placeholder="red">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Size/Dimension</label>
+                                        <input type="text" name="size" id="size" class="form-control border-input"
+                                            placeholder="1 dozen">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Image</label>
+                                        <input type="text" name="img" id="img" class="form-control border-input">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Original Price</label>
+                                        <input type="text" name="oldprice" id="oldprice" class="form-control border-input">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>New Price</label>
+                                        <input type="text" name="price" id="price" class="form-control border-input">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>Stock</label>
+                                        <input type="text" name="stock" id="stock" class="form-control border-input">
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <textarea rows="5" name="descr" id="descr" class="form-control border-input"
+                                            placeholder="Here can be your description"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                                <button type="button" onclick="saveProductData()" class="btn btn-info  button-save btn-fill btn-wd">Save</button>
+                                <button type="button" onclick="updateProductData()" class="btn button-update btn-info btn-fill btn-wd">Update</button>
+
+                            </div>
+                            <div class="clearfix"></div>
+                        </form>
+
+                    </div>
+                    <!--   <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" onclick="saveProductData()" class="btn save-product btn-primary">Save</button>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+
+</body>
+
+<!--   Core JS Files   -->
+<script src="assets/js/jquery.min.js" type="text/javascript"></script>
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--  Checkbox, Radio & Switch Plugins -->
+<script src="assets/js/bootstrap-checkbox-radio.js"></script>
+
+<!--  Charts Plugin -->
+<script src="assets/js/chartist.min.js"></script>
+
+<!--  Notifications Plugin    -->
+<script src="assets/js/bootstrap-notify.js"></script>
+
+<!--  Google Maps Plugin   
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script> -->
+
+<!-- Paper Dashboard Core javascript and methods for Demo purpose -->
+<script src="assets/js/paper-dashboard.js"></script>
+
+<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+<script src="assets/js/demo.js"></script>
+<script>
+    $(document).ready(function () {
+        readProductData();
+        $('.datenow').html(new Date().getMonth() + '/' + new Date().getDate() + '/' + new Date().getFullYear());
+
+    });
+
+    //   var base_url = 'http://104.238.96.209/~project/joroni/super8';
+    var base_url = 'http://localhost';
+
+
+    readProductData = function () {
+        console.log("Pulling data...");
+
+        $.getJSON(base_url + '/slim/public/api/products', function (data) {
+            var items = [];
+            products = data;
+            // localStorage.setItem("products", JSON.stringify(data));
+            //   app.preloader.hide();
+            console.log(data);
+            console.log("Pulling data complete.");
+            // var products = JSON.parse(localStorage.getItem("products"));
+            $('#product-tbody').html("");
+            for (var i = 0; i < products.length; i++) {
+
+                var temp = '<tr><td>' + products[i].id + '</td>' +
+                    '<td><a href="#" onclick="readEditProductData(' + products[i].id +
+                    ');" data-toggle="modal" class="item-link" data-target="#productModal" data-whatever="' + products[i].id +
+                    '">' + products[i].sku + '</a></td>' +
+                    '<td>' + products[i].name + '</td>' +
+                    '<td>' + products[i].cat + '</td>' +
+                    '<td>' + products[i].price + '</td></tr>';
+                //   alert(temp);
+                $('#product-tbody').append(temp);
+            }
+
+        });
+
+
+    }
+
+
+
+    $('#productModal').on('show.bs.modal', function (event) {
+        var modal = $(this);
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        console.log(button);
+        var recipient = button.data('whatever'); // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        modal.find('.modal-body input.identifier').val(recipient);
+
+
+    });
+
+
+    $('.button-add').on('click', function (event) {
+        $('form input, form textarea').val("");
+    });
+
+
+
+
+
+
+    /*******************Add*************************/
+
+    saveProductData = function (event) {
+        var sku = $("#sku").val(),
+            name = $("#name").val(),
+            state = $("#state").val(),
+            cat = $("#cat").val(),
+            statecolor = $("#statecolor").val(),
+            size = $("#size").val(),
+            img = $("#img").val(),
+            oldprice = $("#oldprice").val(),
+            price = $("#price").val(),
+            descr = $("#descr").val(),
+            stock = $("#stock").val();
+
+
+        // Add record
+        $.post(base_url + '/slim/public/api/products/add', {
+            sku: sku,
+            name: name,
+            state: state,
+            cat: cat,
+            statecolor: statecolor,
+            size: size,
+            img: img,
+            oldprice: oldprice,
+            price: price,
+            stock: stock,
+            descr: descr
+        }, function (data, status) {
+            // close the popup
+            $("#productModal").modal("hide");
+
+            // read records again
+            readProductData();
+
+            // clear fields from the popup
+            $('input').val("");
+        })
+
+
+    }
+
+
+    /*******************Update*************************/
+
+
+    readEditProductData = function (id) {
+       
+        console.log("Pulling data...");
+
+
+        // Loading form object to modal
+
+        $.getJSON(base_url + '/slim/public/api/products/' + id, function (data) {
+            var items = [];
+
+
+            
+            console.log(data);
+            console.log("Pulling data complete.");
+
+            
+
+            var modal = $("#productModal");
+            $(".identifier").val(data.id),
+                $("#sku").val(data.sku),
+                $("#name").val(data.name),
+                $("#state").val(data.state),
+                $("#cat").val(data.cat),
+                $("#statecolor").val(data.statecolor),
+                $("#size").val(data.size),
+                $("#img").val(data.img),
+                $("#oldprice").val(data.oldprice),
+                $("#price").val(data.price),
+                $("#descr").val(data.descr),
+                $("#stock").val(data.stock)
+            modal.find('.modal-title').text('Edit');
+        });
+
+
+    }
+
+   
+
+    
+
+    updateProductData = function (id) {
+        alert("Update");
+        var sku = $("#sku").val(),
+            name = $("#name").val(),
+            cat = $("#cat").val(),
+            state = $("#state").val(),
+            statecolor = $("#statecolor").val(),
+            size = $("#size").val(),
+            img = $("#img").val(),
+            oldprice = $("#oldprice").val(),
+            price = $("#price").val(),
+            descr = $("#descr").val(),
+            stock = $("#stock").val(),
+            id = $(".identifier").val();
+
+
+
+        $.put(base_url + '/slim/public/api/products/update/' + id, {
+            sku: sku,
+            name: name,
+            cat: cat,
+            state: state,
+            statecolor: statecolor,
+            size: size,
+            img: img,
+            oldprice: oldprice,
+            price: price,
+            descr: descr,
+            stock: stock
+        }, function (data, status) {
+            // close the popup
+            $("#productModal").modal("hide");
+            // read records again
+            readProductData();
+            // clear fields from the popup
+            $('input, textarea').val("");
+        })
+     }
+
+
+    /********************Delete**************************/
+
+    
+
+  
+    
+
+
+
+
+
+</script>
+
+</html>
