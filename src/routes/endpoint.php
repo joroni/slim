@@ -652,40 +652,31 @@ $app->delete('/api/users/delete/{id}', function(Request $request, Response $resp
 
 
 
-$output_dir = "./uploads/";
-if(isset($_FILES["myfile"]))
-{
-	$ret = array();
-	
-//	This is for custom errors;	
-/*	$custom_error= array();
-	$custom_error['jquery-upload-file-error']="File already exists";
-	echo json_encode($custom_error);
-	die();
-*/
-	$error =$_FILES["myfile"]["error"];
-	//You need to handle  both cases
-	//If Any browser does not support serializing of multiple files using FormData() 
-	if(!is_array($_FILES["myfile"]["name"])) //single file
-	{
- 	 	$fileName = $_FILES["myfile"]["name"];
- 		move_uploaded_file($_FILES["myfile"]["tmp_name"],$output_dir.$fileName);
-    	$ret[]= $fileName;
-	}
-	else  //Multiple files, file[]
-	{
-	  $fileCount = count($_FILES["myfile"]["name"]);
-	  for($i=0; $i < $fileCount; $i++)
-	  {
-	  	$fileName = $_FILES["myfile"]["name"][$i];
-		move_uploaded_file($_FILES["myfile"]["tmp_name"][$i],$output_dir.$fileName);
-	  	$ret[]= $fileName;
-	  }
-	
-	}
-    echo json_encode($ret);
- }
+
+
  
+
+/**************START Order********** */
+// Get All orders
+$app->get('/api/orders', function(Request $request, Response $response){
+    $sql = "SELECT * FROM orders";
+
+    try{
+        // Get DB Object
+        $db = new db();
+        // Connect
+        $db = $db->connect();
+
+        $stmt = $db->query($sql);
+        $orders = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $db = null;
+       echo json_encode($orders);
+        //console.log(json_encode($products));
+    } catch(PDOException $e){
+        echo '{"error": {"text": '.$e->getMessage().'}';
+    }
+});
+
 
 
 /**************Add Order********** */
@@ -694,29 +685,18 @@ if(isset($_FILES["myfile"]))
 
 // Add Orders
 $app->post('/api/orders/add', function(Request $request, Response $response){
-    $sku = $request->getParam('sku');
-    $name = $request->getParam('name');
-    $cat = $request->getParam('cat');
-    $state = $request->getParam('state');
-    $statecolor = $request->getParam('statecolor');
-    $size = $request->getParam('size');
-    $oldprice = $request->getParam('oldprice');
-    $price = $request->getParam('price');
-    $descr = $request->getParam('descr');
-    $stock = $request->getParam('stock');
-    $cname = $request->getParam('cname');
-    $check = $request->getParam('check');
-    $select = $request->getParam('select');
-    $notes = $request->getParam('notes');
-    $smname = $request->getParam('smname');
+
+
     $ponumber = $request->getParam('ponumber');
+    $cname = $request->getParam('cname');
+     $notes = $request->getParam('notes');
+    $dateordered = $request->getParam('dateordered');
+    $items = $request->getParam('items');
     $total = $request->getParam('total');
 
-
-
-    $sql = "INSERT INTO orders (sku,name,cat,state,statecolor,size, oldprice, price,descr,stock,cname,check,select, notes,smname,ponumber, total) VALUES
-    (:sku,:name,:cat,:state,:statecolor,:size,:oldprice,:price,:descr,:stock,:cname,:check,:select,:notes,:smname,:ponumber,:total)";
-
+    $sql = "INSERT INTO orders (ponumber, cname, dateordered, notes, items, total) VALUES
+    (:ponumber,:cname,:dateordered,:notes, :items, :total)";
+  
     try{
         // Get DB Object
         $db = new db();
@@ -724,24 +704,12 @@ $app->post('/api/orders/add', function(Request $request, Response $response){
         $db = $db->connect();
 
         $stmt = $db->prepare($sql);
-
-        $stmt->bindParam(':sku', $sku);
-        $stmt->bindParam(':name',  $name);
-        $stmt->bindParam(':cat',      $cat);
-        $stmt->bindParam(':state',      $state);
-        $stmt->bindParam(':statecolor',    $statecolor);
-        $stmt->bindParam(':size',       $size);
-        $stmt->bindParam(':oldprice',      $oldprice);
-        $stmt->bindParam(':price',      $price);
-        $stmt->bindParam(':descr',      $descr);
-         $stmt->bindParam(':stock',      $stock);
-         $stmt->bindParam(':cname',       $cname);
-         $stmt->bindParam(':check',       $check);
-         $stmt->bindParam(':select',       $select);
-         $stmt->bindParam(':notes',       $notes);
-         $stmt->bindParam(':smname',       $smname);
          $stmt->bindParam(':ponumber',       $ponumber);
-         $stmt->bindParam(':total',       $total);
+         $stmt->bindParam(':cname',       $cname);
+         $stmt->bindParam(':notes',       $notes);
+         $stmt->bindParam(':dateordered',       $dateordered);
+         $stmt->bindParam(':items',       $items);
+       $stmt->bindParam(':total',       $total);
         
 
         $stmt->execute();
@@ -761,10 +729,10 @@ $app->post('/api/orders/add', function(Request $request, Response $response){
 
 /************************ */
 // Get Single Customer
-$app->get('/api/orders/{sku}', function(Request $request, Response $response){
-    $sku = $request->getAttribute('sku');
+$app->get('/api/orders/{ponumber}', function(Request $request, Response $response){
+    $ponumber = $request->getAttribute('ponumber');
 
-    $sql = "SELECT * FROM orders WHERE sku = $sku";
+    $sql = "SELECT * FROM orders WHERE ponumber = $ponumber";
 
     try{
         // Get DB Object

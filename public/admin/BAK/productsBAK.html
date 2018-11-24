@@ -165,8 +165,8 @@
                                             </div>
                                             <div class="col navbar-right" style="margin-right:10px;">
                                                 <button type="button" class="btn button-add btn-primary" data-toggle="modal"
-                                                    data-target="#productModal" data-whatever="@mdo">Add</button>
-                                                <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#productModal" data-whatever="@fat">@fat</button>-->
+                                                    data-target="#myModal" data-whatever="@mdo">Add</button>
+                                                <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-whatever="@fat">@fat</button>-->
 
 
                                             </div>
@@ -241,7 +241,7 @@
             </div>
         </div>
 
-        <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel"
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel"
             aria-hidden="true">
 
             <div class="modal-dialog" role="document">
@@ -409,7 +409,7 @@
 <script src="assets/js/demo.js"></script>
 <script>
     $(document).ready(function () {
-        readProductData();
+        readAllProducts();
         $('.datenow').html(new Date().getMonth() + '/' + new Date().getDate() + '/' + new Date().getFullYear());
 
     });
@@ -418,7 +418,7 @@
     var base_url = 'http://localhost';
 
 
-    readProductData = function () {
+    readAllProducts = function () {
         console.log("Pulling data...");
 
         $.getJSON(base_url + '/slim/public/api/products', function (data) {
@@ -434,7 +434,7 @@
 
                 var temp = '<tr><td>' + products[i].id + '</td>' +
                     '<td><a href="#" onclick="readEditProductData(' + products[i].id +
-                    ');" data-toggle="modal" class="item-link" data-target="#productModal" data-whatever="' + products[i].id +
+                    ');" data-toggle="modal" class="item-link" data-target="#myModal" data-whatever="' + products[i].id +
                     '">' + products[i].sku + '</a></td>' +
                     '<td>' + products[i].name + '</td>' +
                     '<td>' + products[i].cat + '</td>' +
@@ -450,7 +450,7 @@
 
 
 
-    $('#productModal').on('show.bs.modal', function (event) {
+    $('#myModal').on('show.bs.modal', function (event) {
         var modal = $(this);
         var button = $(event.relatedTarget); // Button that triggered the modal
         console.log(button);
@@ -503,10 +503,10 @@
             descr: descr
         }, function (data, status) {
             // close the popup
-            $("#productModal").modal("hide");
+            $("#myModal").modal("hide");
 
             // read records again
-            readProductData();
+            readAllProducts();
 
             // clear fields from the popup
             $('input').val("");
@@ -536,7 +536,7 @@
 
             
 
-            var modal = $("#productModal");
+            var modal = $("#myModal");
             $(".identifier").val(data.id),
                 $("#sku").val(data.sku),
                 $("#name").val(data.name),
@@ -590,9 +590,9 @@
             stock: stock
         }, function (data, status) {
             // close the popup
-            $("#productModal").modal("hide");
+            $("#myModal").modal("hide");
             // read records again
-            readProductData();
+            readAllProducts();
             // clear fields from the popup
             $('input, textarea').val("");
         })

@@ -165,8 +165,8 @@
                                             </div>
                                             <div class="col navbar-right">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                    data-target="#productModal" data-whatever="@mdo">Add</button>
-                                                <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#productModal" data-whatever="@fat">@fat</button>-->
+                                                    data-target="#myModal" data-whatever="@mdo">Add</button>
+                                                <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-whatever="@fat">@fat</button>-->
 
 
                                             </div>
@@ -241,7 +241,7 @@
             </div>
         </div>
 
-        <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel"
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -458,7 +458,7 @@
 <script src="assets/js/demo.js"></script>
 <script>
     $(document).ready(function () {
-        readProductData();
+        readAllProducts();
         $('.datenow').html(new Date().getMonth() + '/' + new Date().getDate() + '/' + new Date().getFullYear());
 
     });
@@ -467,7 +467,7 @@
     var base_url = 'http://localhost';
    
    
-    readProductData = function () {
+    readAllProducts = function () {
         console.log("Pulling data...");
 
         $.getJSON(base_url + '/slim/public/api/products', function (data) {
@@ -497,7 +497,7 @@
 
 
 
-    $('#productModal').on('show.bs.modal', function (event) {
+    $('#myModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget); // Button that triggered the modal
         var recipient = button.data('whatever'); // Extract info from data-* attributes
         // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -540,10 +540,10 @@
             descr: descr
         }, function (data, status) {
         // close the popup
-        $("#productModal").modal("hide");
+        $("#myModal").modal("hide");
  
         // read records again
-       readProductData();
+       readAllProducts();
  
         // clear fields from the popup
         $('input').val("");

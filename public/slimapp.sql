@@ -27,17 +27,13 @@ SET time_zone = "+00:00";
 -- Table structure for table `products`
 --
 
+
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `ponumber` varchar(200) NOT NULL,
    `cname` varchar(200) NOT NULL,
     `notes` varchar(200) NOT NULL,
      `dateordered` varchar(200) NOT NULL,
-  `sku` varchar(200) NOT NULL,
-  `name` varchar(200) NOT NULL,
-  `oldprice` varchar(200) NOT NULL,
-  `price` varchar(200) NOT NULL,
-  `smname` varchar(200) NOT NULL,
  `items` varchar(800) NOT NULL,
  
   `total` varchar(200) NOT NULL
@@ -200,6 +196,11 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+
+--
+ALTER TABLE `orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
